@@ -1,0 +1,51 @@
+.container {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(https://picsum.photos/720/480?blur=2);
+}
+#heading {
+  font-size: 32px;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: "Open Sans";
+  margin: 1rem 0rem 2rem 0rem;
+}
+mat-card {
+  max-width: 400px;
+  background-image: linear-gradient(
+    to bottom,
+    #007bff,
+    #007bff 25%,
+    transparent 25%,
+    transparent 100%
+  );
+  background-image: -webkit-linear-gradient(
+    top,
+    #007bff,
+    #007bff 25%,
+    transparent 25%,
+    transparent 100%
+  );
+  margin: auto;
+  -ms-transform: translateY(60%);
+  transform: translateY(63%);
+}
+mat-form-field {
+  width: 100%;
+}
+mat-form-field:first-child {
+  margin-top: 1rem;
+}
+button {
+  width: 100%;
+  background-color: #007bff;
+  color: #ffffff;
+  max-height: 42px;
+  font-size: 16px;
+}
+@media screen and (max-width: 600px) {
+  mat-card {
+    max-width: 87%;
+  }
+}

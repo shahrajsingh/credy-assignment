@@ -1,0 +1,34 @@
+<div class="container">
+  <mat-card>
+    <p id="heading">Log In</p>
+    <form #signinform="ngForm" (submit)="login(signinform)">
+      <mat-form-field appearance="outline">
+        <mat-label>User Name</mat-label>
+        <input
+          name="username"
+          type="text"
+          required
+          ngModel
+          #username="ngModel"
+          placeholder="e.g:- testuser"
+          matInput
+        />
+        <mat-error *ngIf="username.invalid">username is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          name="Password"
+          type="text"
+          required
+          ngModel
+          #Password="ngModel"
+          placeholder="********"
+          matInput
+        />
+        <mat-error *ngIf="username.invalid">Password is required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button type="submit">Log In</button>
+    </form>
+  </mat-card>
+</div>
