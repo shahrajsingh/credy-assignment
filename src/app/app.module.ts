@@ -28,8 +28,8 @@ import { TokenInterceptor } from './movies/token-interceptor';
 import { HeaderComponent } from './header/header.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { PaginatorComponent } from './paginator/paginator.component';
-import { AuthGuard } from './Auth/auth.guard';
-import { MobileLoginComponent } from './Auth/mobile-login/mobile-login.component';
+import { AuthGuard } from './auth/auth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,6 @@ import { MobileLoginComponent } from './Auth/mobile-login/mobile-login.component
     HeaderComponent,
     MovieCardComponent,
     PaginatorComponent,
-    MobileLoginComponent,
   ],
   imports: [
     BrowserModule,
