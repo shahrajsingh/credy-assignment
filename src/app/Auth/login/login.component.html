@@ -1,3 +1,5 @@
+<!--
+<mat-spinner id="spinner" *ngIf="isLoading"></mat-spinner>
 <div class="container">
   <mat-card>
     <p id="heading">Log In</p>
@@ -18,17 +20,180 @@
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input
-          name="Password"
-          type="text"
+          name="password"
+          [type]="hide ? 'password' : 'text'"
           required
           ngModel
-          #Password="ngModel"
+          #password="ngModel"
           placeholder="********"
           matInput
         />
-        <mat-error *ngIf="username.invalid">Password is required</mat-error>
+        <button
+          matSuffix
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          style="background: none; border: none"
+        >
+          <mat-icon (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">Password is required</mat-error>
       </mat-form-field>
-      <button mat-raised-button type="submit">Log In</button>
+      <button
+        id="loginBtn"
+        mat-raised-button
+        type="submit"
+        [ngStyle]="{
+          'background-color': isLoading == true ? 'grey' : '#007bff'
+        }"
+        [disabled]="isLoading"
+      >
+        Log In
+      </button>
     </form>
+  </mat-card>
+</div>
+-->
+<div class="container">
+  <mat-card>
+    <div class="left-text" [ngStyle]="{ animation: Animations.signintext }">
+      <p id="heading">Welcome Back</p>
+      <p id="subheading">
+        To Continue Please LogIn with your Personal Login Info
+      </p>
+      <button id="signin" (click)="start()">Log In</button>
+    </div>
+    <img
+      id="rightimg"
+      src="https://imgsto.s3.ap-south-1.amazonaws.com/bag1.webp"
+      [ngStyle]="{ animation: Animations.bg1ani }"
+    />
+    <img
+      class="left-img"
+      src="https://imgsto.s3.ap-south-1.amazonaws.com/bg+left.webp"
+      [ngStyle]="{ animation: Animations.leftanime }"
+    />
+    <div
+      class="login-container"
+      [ngStyle]="{ animation: Animations.loginform }"
+    >
+      <p id="loginheading">Log In</p>
+      <form #signinform="ngForm" (submit)="login(signinform)">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>User Name</mat-label>
+          <input
+            name="username"
+            type="text"
+            required
+            ngModel
+            #username="ngModel"
+            placeholder="e.g:- testuser"
+            matInput
+          />
+          <mat-error *ngIf="username.invalid">username is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Password</mat-label>
+          <input
+            name="password"
+            [type]="hide ? 'password' : 'text'"
+            required
+            ngModel
+            #password="ngModel"
+            placeholder="********"
+            matInput
+          />
+          <button
+            matSuffix
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+            style="background: none; border: none"
+          >
+            <mat-icon (click)="hide = !hide">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+          <mat-error *ngIf="password.invalid">Password is required</mat-error>
+        </mat-form-field>
+        <button
+          id="loginBtn"
+          mat-raised-button
+          type="submit"
+          [ngStyle]="{
+            'background-color': isLoading == true ? 'grey' : '#C32B7A'
+          }"
+          [disabled]="isLoading"
+        >
+          Log In
+        </button>
+      </form>
+    </div>
+    <div class="left-text2" [ngStyle]="{ animation: Animations.left2text }">
+      <h1>Hello, Friend</h1>
+      <p>Know about your favourite Movies</p>
+    </div>
+  </mat-card>
+</div>
+<div class="mobile-login">
+  <mat-card>
+    <div class="img" [ngStyle]="{ animation: Animations.mobimganimation }">
+      <button id="mobsignin" (click)="start()">Log In</button>
+    </div>
+    <div class="form" [ngStyle]="{ animation: Animations.formanimation }">
+      <mat-toolbar color="accent">Log In</mat-toolbar>
+
+      <div class="form-container">
+        <form #mobsigninform="ngForm" (submit)="mobileform(mobsigninform)">
+          <mat-form-field appearance="outline" color="accent">
+            <mat-label>User Name</mat-label>
+            <input
+              name="mobusername"
+              type="text"
+              required
+              ngModel
+              #mobusername="ngModel"
+              placeholder="e.g:- testuser"
+              matInput
+            />
+            <mat-error *ngIf="username.invalid">username is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" color="accent">
+            <mat-label>Password</mat-label>
+            <input
+              name="mobpassword"
+              [type]="hide ? 'password' : 'text'"
+              required
+              ngModel
+              #mobpassword="ngModel"
+              placeholder="********"
+              matInput
+            />
+            <button
+              matSuffix
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+              style="background: none; border: none"
+            >
+              <mat-icon (click)="hide = !hide">{{
+                hide ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.invalid">Password is required</mat-error>
+          </mat-form-field>
+          <button
+            class="loginBtn"
+            mat-raised-button
+            type="submit"
+            [ngStyle]="{
+              'background-color': isLoading == true ? 'grey' : '#C32B7A'
+            }"
+            [disabled]="isLoading"
+          >
+            Log In
+          </button>
+        </form>
+      </div>
+    </div>
   </mat-card>
 </div>

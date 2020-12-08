@@ -1,0 +1,33 @@
+<div class="container">
+  <button
+    mat-raised-button
+    [disabled]="!left"
+    [ngStyle]="{
+      'background-color': !left == true ? 'grey' : '#C92B7B'
+    }"
+    #tooltipprev="matTooltip"
+    matTooltip="Previous Page"
+    matTooltipPosition="above"
+    (click)="previous()"
+    [disabled]="isLoading"
+    color="accent"
+  >
+    <mat-icon id="left">play_arrow</mat-icon>
+  </button>
+  <div class="pageno">Page {{ index }}</div>
+  <button
+    mat-raised-button
+    [disabled]="!right"
+    [ngStyle]="{
+      'background-color': !right == true ? 'grey' : '#C92B7B'
+    }"
+    #tooltipnext="matTooltip"
+    matTooltip="Next Page"
+    matTooltipPosition="above"
+    (click)="next()"
+    [disabled]="isLoading"
+    color="accent"
+  >
+    <mat-icon>play_arrow</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,22 @@
+.container {
+  height: 40px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+
+  border-radius: 6px;
+}
+.pageno {
+  width: 33%;
+  height: 100%;
+  font-size: 18px;
+  text-align: center;
+  line-height: 40px;
+}
+#left {
+  transform: rotate(180deg);
+}
+button {
+  width: 34%;
+  background-color: #92dddb;
+}

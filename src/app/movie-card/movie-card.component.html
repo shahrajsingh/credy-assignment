@@ -1,0 +1,25 @@
+<div class="container">
+  <div style="height: 50px">
+    <img class="avatar" [src]="background" />
+  </div>
+
+  <p class="heading" mat-dialog-title>{{ movie.title }}</p>
+
+  <p
+    class="description"
+    [ngStyle]="{ 'max-height.px': maxHeight }"
+    mat-dialog-content
+  >
+    {{ movie.description }}
+  </p>
+  <mat-divider></mat-divider>
+  <div class="genere" *ngIf="movie.genres">
+    Genere:
+    <mat-chip-list
+      ><mat-chip *ngFor="let i of genre">{{ i }}</mat-chip></mat-chip-list
+    >
+  </div>
+</div>
+<div mat-dialog-actions mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

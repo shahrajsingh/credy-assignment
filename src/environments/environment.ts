@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  apiUrl: 'https://demo.credy.in/api/v1/',
+  production: false,
 };
 
 /*

@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="loading" *ngIf="isLoading">
+  <img
+    src="https://imgsto.s3.ap-south-1.amazonaws.com/loading.gif"
+    alt="loading..."
+  />
+  <div class="progress">
+    <div class="indeterminate"></div>
+  </div>
+</div>
+<div *ngIf="!isLoading">
+  <div class="movies-container" *ngIf="is_success">
+    <mat-grid-list
+      [cols]="cols"
+      rowHeight="310px"
+      gutterSize="1rem"
+      (window:resize)="onResize($event)"
+    >
+      <mat-grid-tile *ngFor="let i of Movies">
+        <mat-card class="movie-card" (click)="showMore(i)">
+          <mat-card-header>
+            <div
+              mat-card-avatar
+              id="card-img"
+              style="background-image: url(https://ui-avatars.com/api/?rounded=true&&name={{
+                i.title | slice: 0:2
+              }});"
+            ></div>
+            <mat-card-title>{{ i.title }}</mat-card-title>
+            <mat-card-subtitle>{{ i.genres }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <p>
+              {{
+                i.description.length > 100
+                  ? (i.description | slice: 0:100) + "..."
+                  : i.description
+              }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="showMore(i)" id="more">More</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <app-paginator
+      *ngIf="is_success"
+      [left]="previous"
+      [index]="index"
+      [right]="next"
+      [isLoading]="isLoading"
+      (changeEvent)="Load($event)"
+    ></app-paginator>
+  </div>
+</div>
+<div class="error-container" *ngIf="!is_success && !isLoading">
+  <img src="https://imgsto.s3.ap-south-1.amazonaws.com/Broken-error.png" />
+
+  <button
+    mat-raised-button
+    color="primary"
+    id="refreshBtn"
+    *ngIf="!is_success"
+    (click)="refresh()"
+  >
+    Refresh
+  </button>
+
+  <h4>Woops! There was an error Please, Click Refresh</h4>
+</div>
